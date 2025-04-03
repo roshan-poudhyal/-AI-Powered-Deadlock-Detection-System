@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Deadlock Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">AI Deadlock Detection System</h1>
+            <p class="text-gray-600">Real-time system monitoring and deadlock prediction</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- System Stats -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">System Statistics</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="stat-card">
+                        <h3>CPU Usage</h3>
+                        <p id="cpu-usage">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Memory Usage</h3>
+                        <p id="memory-usage">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Disk Usage</h3>
+                        <p id="disk-usage">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Process Count</h3>
+                        <p id="process-count">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadlock Risk -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Deadlock Risk</h2>
+                <canvas id="deadlockChart"></canvas>
+                <div class="mt-4 text-center">
+                    <div class="inline-block px-4 py-2 rounded-full" id="risk-indicator">
+                        Current Risk: <span id="current-risk">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process List -->
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Running Processes</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2">PID</th>
+                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">CPU %</th>
+                            <th class="px-4 py-2">Memory %</th>
+                            <th class="px-4 py-2">Status</th>
+                            <th class="px-4 py-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="process-list">
+                        <!-- Processes will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Deadlock Alerts -->
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Deadlock Alerts</h2>
+            <div id="deadlock-alerts" class="space-y-4">
+                <!-- Alerts will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification-container" class="fixed top-4 right-4 z-50">
+        <!-- Notifications will be added here dynamically -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
