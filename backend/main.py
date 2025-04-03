@@ -122,7 +122,7 @@ async def restart_process(pid: int):
         raise HTTPException(status_code=400, detail=result["message"])
     return result
 
-
+# Mount static files last to avoid conflicts with API routes
 frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
 app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
